@@ -2652,7 +2652,8 @@ class TextEditorComponent {
     const {model} = this.props
     if (model.isMini()) return false
     if (model.getAutoWidth()) return false
-    if (model.isSoftWrapped()) return false
+    if (model.isSoftWrapped() && !model.softWrapAtPreferredLineLength) return false
+
     return this.getContentWidth() > this.getScrollContainerClientWidth()
   }
 
@@ -2672,7 +2673,7 @@ class TextEditorComponent {
   getScrollWidth () {
     const {model} = this.props
 
-    if (model.isSoftWrapped()) {
+    if (model.isSoftWrapped() && !model.softWrapAtPreferredLineLength) {
       return this.getScrollContainerClientWidth()
     } else if (model.getAutoWidth()) {
       return this.getContentWidth()

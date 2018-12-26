@@ -3669,7 +3669,7 @@ class TextEditor {
   getSoftWrapColumn () {
     if (this.isSoftWrapped() && !this.mini) {
       if (this.softWrapAtPreferredLineLength) {
-        return Math.min(this.getEditorWidthInChars(), this.preferredLineLength)
+        return this.preferredLineLength
       } else {
         return this.getEditorWidthInChars()
       }
